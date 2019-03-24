@@ -25,8 +25,9 @@ class Manufacturer extends Database{
 	}
 
 	public function add($data=''){
-		/*if(!empty($_POST['m_name'])){
-			$name = $this->mysqli->real_escape_string($_POST['m_name']);
+		//echo json_encode($data);
+		if(!empty($data['m_name'])){
+			$name = $this->mysqli->real_escape_string($data['m_name']);
 			$c_date = date('Y-m-d H:i:s', strtotime('now'));
 			$result = $this->insert(
 				'manufacturer_tb',
@@ -35,9 +36,7 @@ class Manufacturer extends Database{
 					'created_date' => $c_date
 				)
 			);
-		}*/
-
-		print_r($data);
+		}
 
 	}
 

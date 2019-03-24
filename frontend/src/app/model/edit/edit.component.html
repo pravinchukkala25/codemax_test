@@ -1,3 +1,22 @@
-<p>
-  edit works!
-</p>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<div class="col-lg-8 col-md-8 sol-sm-8">
+			<form class="form-signin">
+				<div class="text-center mb-4">
+					<h1 class="h3 mb-3 font-weight-normal">Edit Manufacturer</h1>
+				</div>
+
+				<div class="form-label-group">
+					<label>Name</label>
+					<input type="text" class="form-control" placeholder="Enter Manufacturer Name" formControlName="m_name" required>
+					<div class="alert-danger" *ngIf="!manufacturerForm.controls['m_name'].valid && (manufacturerForm.controls['m_name'].touched)">
+						<div [hidden]="!manufacturerForm.controls['m_name'].errors.required">
+							Name is required.
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			</form>
+		</div>
+	</div>
+</div>

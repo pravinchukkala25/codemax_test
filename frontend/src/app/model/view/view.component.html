@@ -1,16 +1,16 @@
 <div class="container">
 	<div class="py-5 text-center">
-		<h2>Manufacturer Details</h2>
+		<h2>Model Details</h2>
 	</div>
 	<div class="py-2">
 		<div class="row py-2">
 			<div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
-				<button class="btn btn-success" (click)="getNavigation('create', '')">Create New Manufacturer</button>
+				<button class="btn btn-success" (click)="getNavigation('model/create', '')">Create New</button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
-				<table #manufacturersTable class="display" style="width:100%">
+				<table #modelsTable class="display" style="width:100%">
 					<thead>
 						<tr>
 							<th>Serial Number</th>
@@ -20,12 +20,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let manufact of manufacturers;">
-							<td>{{manufact.id}}</td>
-							<td>{{manufact.model_name}}</td>
-							<td>{{manufact.m_year}}</td>
+						<tr *ngFor="let model of models;">
+							<td>{{model.id}}</td>
+							<td>{{model.model_name}}</td>
+							<td>{{model.m_year}}</td>
 							<td>
-								<button type="button" class="btn btn-danger" (click)="editModel(model.id)">Edit</button>
 								<button type="button" class="btn btn-danger" (click)="removeModel(model.id)">Delete</button>
 							</td>
 						</tr>

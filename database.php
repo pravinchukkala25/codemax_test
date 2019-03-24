@@ -53,32 +53,9 @@ class Database{
 		}
 	}
 
-
-	// Return any query =====================
-	public function queryAny($sql){
-		$result = $this->mysqli->query($sql);
-		return $result->num_rows;
-	}
-
 	// Select Query ==========================	
 	public function getData($table, $sql = '*'){
 		$result = $this->mysqli->query("SELECT ". $sql ." FROM " . $table);
-		if($result->num_rows >= 0)
-		{
-			$rows = array();
-			while($row = $result->fetch_assoc())
-			{
-				$rows[] = $row;
-			}
-
-			echo json_encode($rows);
-			
-		}
-	}
-
-
-	public function getSingleData($table, $sql = '*', $where){
-		$result = $this->mysqli->query("SELECT ". $sql ." FROM " . $table . "WHERE ". $where);
 		if($result->num_rows >= 0)
 		{
 			$rows = array();

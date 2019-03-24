@@ -10,22 +10,22 @@ declare var $;
 })
 
 export class ViewModel implements OnInit {
-	public manufacturers: any = [];
+	public models: any = [];
 
-	@ViewChild('manufacturersTable') Table;
+	@ViewChild('modelsTable') Table;
 
 	public dataTable: any;
 
 	constructor(private crudService: CrudService, private router: Router) { }
 
 	ngOnInit() {
-		this.loadmanufacturers();
+		this.loadModel();
 	}
 
-	loadmanufacturers(){
-		this.crudService.getmanufacturers().subscribe(
-			manufacturerData => {
-				this.manufacturers = manufacturerData;
+	loadModel(){
+		this.crudService.getModel().subscribe(
+			modelData => {
+				this.models = modelData;
 				this.dataTable = $(this.Table.nativeElement);
 				setTimeout(()=>{this.dataTable.DataTable();}, 1000);
 			}
@@ -34,7 +34,7 @@ export class ViewModel implements OnInit {
 
 	removeModel(id){
 		var data={'m_id': id}; 
-		this.crudService.deleteModel(id).subscribe(result => {
+		this.crudService.soldModel(id).subscribe(result => {
 			alert('Data Deleted Successfully');
 			this.ngOnInit();
 		});

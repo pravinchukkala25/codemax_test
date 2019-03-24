@@ -8,35 +8,49 @@ class Model extends Manufacturer{
 	}
 
 
-	public function view(){
-		$result = $this->getData('manufacturer_tb');
+	public function viewModel(){
+		$result = $this->getData('models');
 		return $result;
 	}
 
-	public function add($data=''){
-		if(!empty($data['m_name'])){
-			$name = $this->mysqli->real_escape_string($data['m_name']);
+	public function addModel($data=''){
+		if(!empty($data['model_name'])){
+
+			$name = $this->mysqli->real_escape_string($data['model_name']);
+			$color = $this->mysqli->real_escape_string($data['color']);
+			$m_year = $this->mysqli->real_escape_string($data['m_date']);
+			$reg_no = $this->mysqli->real_escape_string($data['reg_no']);
+			$m_id = $this->mysqli->real_escape_string($data['m_id']);
+			$note = $this->mysqli->real_escape_string($data['note']);
 			$c_date = date('Y-m-d H:i:s', strtotime('now'));
 			$result = $this->insert(
-				'manufacturer_tb',
+				'models',
 				array(
-					'm_name' => $name,
-					'created_date' => $c_date
+					'model_name' => $name,
+					'm_id' => $m_id,
+					'color' => $color,
+					'm_year' => $m_year,
+					'reg_no' => $reg_no,
+					'note' => $note,
+					'c_date' => $c_date
 				)
 			);
+
+			return $result;
+
 		}
 
 	}
 
-	public function edit($data = ''){
+	public function editModel($data = ''){
 		if(isset($data['m_id'])){
-			$result = $this->getSingleData('manufacturer_tb','*','m_id='. $data['m_id']);
+			$result = $this->getSingleData('models','*','id='. $data['m_id']);
 			return $result;
 		}
 	}
 
-	public function remove($id){
-		if($this->delete('manufacturer_tb','m_id='.$id)){
+	public function removeModel($id){
+		if($this->delete('models','id='.$id)){
 			return "Data Deleted..!!";
 		}
 	}
@@ -46,22 +60,22 @@ class Model extends Manufacturer{
 
 //$man = new db;
 
-$manufacturer = new Model;
+$model = new Model;
 
 //$veiwData = $man->view();
 $method = explode('/', $_SERVER['REQUEST_URI']);
 switch($method[3]) {
-	case 'view':
-	$manufacturer->view();
+	case 'viewModel':
+	$model->viewModel();
 	break;
-	case 'add':
-	$manufacturer->add($_REQUEST);
+	case 'addModel':
+	$model->addModel($_REQUEST);
 	break;
-	case 'edit':
-	$manufacturer->edit($_REQUEST);
+	case 'editModel':
+	$model->editModel($_REQUEST);
 	break;
-	case 'remove':
+	case 'removeModel':
 	$id = $method[4];
-	$manufacturer->remove($id);
+	$model->removeModel($id);
 	break;
 }

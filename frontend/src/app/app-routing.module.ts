@@ -9,7 +9,7 @@ import {CreateModel} from "./model/create/create.component";
 const routes: Routes = [
 {path: 'manufacture', component: ViewComponent},
 {path: 'manufacture/create', component: CreateComponent},
-{path: 'model', component: ViewModel},
+{path: '', component: ViewModel},
 {path: 'model/create', component: CreateModel}
 ];
 

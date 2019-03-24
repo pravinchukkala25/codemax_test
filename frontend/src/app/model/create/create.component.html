@@ -1,49 +1,79 @@
 <div class="container">
+
 	<div class="row justify-content-md-center">
 		<div class="col-lg-8 col-md-8 sol-sm-8">
-			<form [formGroup]="modelForm" (ngSubmit)="saveModel(modelForm.value)">
-				<div class="form-group">
-					<label>Model Name</label>
-					<input type="text" class="form-control" placeholder="Enter Model Name" formControlName="m_name" required>
-					<div class="alert-danger" *ngIf="!modelForm.controls['m_name'].valid && (modelForm.controls['m_name'].touched)">
-						<div [hidden]="!modelForm.controls['m_name'].errors.required">
-							Model Name is required.
+			<div class="py-5 text-center"><h1>Add Model</h1></div>
+			<div class="card">
+				<div class="card-body">
+					<form [formGroup]="modelForm" (ngSubmit)="saveModel(modelForm.value)">
+						<div class="form-group">
+							<label>Model Name</label>
+							<input type="text" class="form-control" placeholder="Enter Model Name" formControlName="model_name" required>
+							<div class="alert-danger" *ngIf="!modelForm.controls['model_name'].valid && (modelForm.controls['model_name'].touched)">
+								<div [hidden]="!modelForm.controls['model_name'].errors.required">
+									Model Name is required.
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label>Model Color</label>
-					<select formControlName="m_name">
-						<option value="">Select Color</option>
-						<option value="red">Red</option>
-						<option value="green">Green</option>
-						<option value="blue">Blue</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Select Manufacturing</label>
-				</div>
-				<div class="form-group">
-					<label>Manufacturing Year</label>
-					<input type="text" class="form-control" placeholder="Enter Model Name" formControlName="m_name" required>
-					<div class="alert-danger" *ngIf="!modelForm.controls['m_name'].valid && (modelForm.controls['m_name'].touched)">
-						<div [hidden]="!modelForm.controls['m_name'].errors.required">
-							Manufacturer year is required.
+						<div class="form-group">
+							<label>Registration No.</label>
+							<input type="int" class="form-control" formControlName="reg_no" placeholder="Enter Registeration No." required>
+							<div class="alert-danger" *ngIf="!modelForm.controls['reg_no'].valid && (modelForm.controls['reg_no'].touched)">
+								<div [hidden]="!modelForm.controls['reg_no'].errors.required">
+									Registration No is required.
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label>Model Images</label>
-					<input type="file" class="form-control" placeholder="Enter Model Name" formControlName="m_images" required>
-					<div class="alert-danger" *ngIf="!modelForm.controls['m_images'].valid && (modelForm.controls['m_images'].touched)">
-						<div [hidden]="!modelForm.controls['m_images'].errors.required">
-							Upload Model Images.
+
+						<div class="form-group">
+							<label>Model Color</label>
+							<select class="form-control" required formControlName="color">
+								<option value=""></option>
+								<option value="red">Red</option>
+								<option value="green">Green</option>
+								<option value="blue">Blue</option>
+							</select>
+							<div class="alert-danger" *ngIf="!modelForm.controls['color'].valid && (modelForm.controls['color'].touched)">
+								<div [hidden]="!modelForm.controls['color'].errors.required">
+									Color option is required.
+								</div>
+							</div>
 						</div>
-					</div>
+						<div class="form-group">
+							<label>Select Manufacturing</label>
+							<select  class="form-control" required [(ngModel)]="mValue" formControlName="m_id" required>
+								<option *ngFor="let manufact of manufactures;" [value]="manufact.m_id">{{manufact.m_name}}</option>
+							</select>
+							<div class="alert-danger" *ngIf="!modelForm.controls['m_id'].valid && (modelForm.controls['m_id'].touched)">
+								<div [hidden]="!modelForm.controls['m_id'].errors.required">
+									Manufacturer option is required.
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Manufacturing Year</label>
+							<input type="date" class="form-control" placeholder="yyyy/mm/dd" formControlName="m_date" required>
+							<div class="alert-danger" *ngIf="!modelForm.controls['m_date'].valid && (modelForm.controls['m_date'].touched)">
+								<div [hidden]="!modelForm.controls['m_date'].errors.required">
+									Manufacturer date field is required.
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="form-group">
+							<label>Model Images</label>
+							<input type="file" class="form-control" placeholder="Enter Model Name" formControlName="m_images" required>
+						</div> -->
+
+						<div class="form-group">
+							<label>Notes: </label>
+							<textarea name="note" class="form-control" cols="30" rows="10"></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary" [disabled]="!modelForm.valid">Submit</button>
+					</form>
 				</div>
-				<button type="submit" class="btn btn-primary" [disabled]="!modelForm.valid">Submit</button>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>

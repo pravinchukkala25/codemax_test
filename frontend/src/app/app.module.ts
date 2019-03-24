@@ -4,21 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
-import { ViewComponent } from './crud/view/view.component';
-import { CreateComponent } from './crud/create/create.component';
-import { UpdateComponent } from './crud/update/update.component';
+import { ViewComponent } from './manufacture/view/view.component';
+import { CreateComponent } from './manufacture/create/create.component';
+import { ViewModel } from './model/view/view.component';
+import { CreateModel } from './model/create/create.component';
+import { EditModel } from './model/edit/edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RemoveComponent } from './crud/remove/remove.component';
-import { EditComponent } from './model/edit/edit.component';
 
 @NgModule({
   declarations: [
   AppComponent,
   ViewComponent,
   CreateComponent,
-  UpdateComponent,
-  RemoveComponent,
-  EditComponent,
+  ViewModel,
+  CreateModel,
+  EditModel
   ],
   imports: [
   BrowserModule,

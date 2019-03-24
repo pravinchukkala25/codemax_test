@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Manufacturer Details</h2>
+  </div>
+  <div class="py-2">
+    <div class="row py-2">
+      <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+        <button class="btn btn-success" (click)="getNavigation('create', '')">Create New Manufacturer</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+        <table #manufacturersTable class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Created Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let manufact of manufacturers;">
+              <td>{{manufact.m_id}}</td>
+              <td>{{manufact.m_name}}</td>
+              <td>{{manufact.created_date}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="removeManufacturer(manufact.m_id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

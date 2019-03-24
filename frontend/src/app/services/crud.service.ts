@@ -18,12 +18,13 @@ export class CrudService {
 		return this.http.post(this.url + 'manufacturer/add', data);
 	}
 
-	updateProduct(data){
+	updateManufacturer(data){
 		return this.http.post(this.url + 'manufacturer/edit', data);
 	}
 
-	deleteProduct(id){
-		return this.http.get(this.url + 'delete.php?id=' + id);
+	deleteManufacturer(id){
+		console.log(id);
+		return this.http.get(this.url + 'manufacturer/remove/' + id);
 	}
 
 

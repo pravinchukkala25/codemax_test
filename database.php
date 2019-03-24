@@ -77,6 +77,22 @@ class Database{
 	}
 
 
+	public function getSingleData($table, $sql = '*', $where){
+		$result = $this->mysqli->query("SELECT ". $sql ." FROM " . $table . "WHERE ". $where);
+		if($result->num_rows >= 0)
+		{
+			$rows = array();
+			while($row = $result->fetch_assoc())
+			{
+				$rows[] = $row;
+			}
+
+			echo json_encode($rows);
+			
+		}
+	}
+
+
 	// Update Query =========================
 	public function update($table, $data, $where)
 	{
@@ -90,9 +106,9 @@ class Database{
 	}
 
 	// Delete Query ========================
-	public function delete($table , $where)
+	public function delete($table, $where)
 	{
-		return $this->mysqli->query("DELETE FROM ".$table." WHERE ".$where);
+		$this->mysqli->query("DELETE FROM ".$table." WHERE ".$where);
 	}
 
 }

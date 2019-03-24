@@ -32,6 +32,14 @@ export class ViewComponent implements OnInit {
       );
   }
 
+  removeManufacturer(id){
+    var data={'m_id': id}; 
+    this.crudService.deleteManufacturer(id).subscribe(result => {
+      alert('Data Deleted Successfully');
+      this.ngOnInit();
+    });
+  }
+
   getNavigation(link, id){
     if(id === ''){
       this.router.navigate([link]);

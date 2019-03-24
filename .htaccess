@@ -4,12 +4,15 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-s
 RewriteRule ^(.*)$ manufacturer.php?x=$1 [QSA,NC,L]
+RewriteRule ^(.*)$ model.php?x=$1 [QSA,NC,L]
 
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*)$ manufacturer.php [QSA,NC,L]
+RewriteRule ^(.*)$ model.php [QSA,NC,L]
 
 RewriteCond %{REQUEST_FILENAME} -s
 RewriteRule ^(.*)$ manufacturer.php [QSA,NC,L]	
+RewriteRule ^(.*)$ model.php [QSA,NC,L]	
 </IfModule>
 # Set the headers for the restful api
 Header always set Access-Control-Allow-Origin "http://localhost:4200"

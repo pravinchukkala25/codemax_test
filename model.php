@@ -1,23 +1,12 @@
 <?php 
 
-/**
-* Manufacturer Class
-* =============================================================
-*/
-// Require Database
-require_once('database.php');
+require_once('manufacturer.php');
 
-
-
-class Manufacturer extends Database{
-
-	// public $method;
-
-	// public $database = $db;
+class Model extends Manufacturer{
 	public function __construct(){
 		parent::__construct();
-
 	}
+
 
 	public function view(){
 		$result = $this->getData('manufacturer_tb');
@@ -25,7 +14,6 @@ class Manufacturer extends Database{
 	}
 
 	public function add($data=''){
-		//echo json_encode($data);
 		if(!empty($data['m_name'])){
 			$name = $this->mysqli->real_escape_string($data['m_name']);
 			$c_date = date('Y-m-d H:i:s', strtotime('now'));
@@ -40,13 +28,12 @@ class Manufacturer extends Database{
 
 	}
 
-
-	/*public function edit($data = ''){
+	public function edit($data = ''){
 		if(isset($data['m_id'])){
 			$result = $this->getSingleData('manufacturer_tb','*','m_id='. $data['m_id']);
 			return $result;
 		}
-	}*/
+	}
 
 	public function remove($id){
 		if($this->delete('manufacturer_tb','m_id='.$id)){
@@ -54,13 +41,12 @@ class Manufacturer extends Database{
 		}
 	}
 
-
 }
 
 
 //$man = new db;
 
-$manufacturer = new Manufacturer;
+$manufacturer = new Model;
 
 //$veiwData = $man->view();
 $method = explode('/', $_SERVER['REQUEST_URI']);
@@ -70,6 +56,9 @@ switch($method[3]) {
 	break;
 	case 'add':
 	$manufacturer->add($_REQUEST);
+	break;
+	case 'edit':
+	$manufacturer->edit($_REQUEST);
 	break;
 	case 'remove':
 	$id = $method[4];

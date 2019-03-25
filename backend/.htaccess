@@ -1,13 +1,18 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /
-# If an existing asset or directory is requested go to it as it is
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
-RewriteRule ^ - [L]
-# If the requested resource doesn't exist, use index.html
-RewriteRule ^ /index.html
+RewriteBase /backend/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteRule ^(.*)$ manufacturer.php?x=$1 [QSA,NC,L]
+RewriteRule ^(.*)$ model.php?x=$1 [QSA,NC,L]
 
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$ manufacturer.php [QSA,NC,L]
+RewriteRule ^(.*)$ model.php [QSA,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} -s
+RewriteRule ^(.*)$ manufacturer.php [QSA,NC,L]	
+RewriteRule ^(.*)$ model.php [QSA,NC,L]	
 </IfModule>
 # Set the headers for the restful api
 Header always set Access-Control-Allow-Origin "https://pcodextest.000webhostapp.com"

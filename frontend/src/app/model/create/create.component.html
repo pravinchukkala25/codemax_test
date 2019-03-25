@@ -27,8 +27,7 @@
 
 						<div class="form-group">
 							<label>Model Color</label>
-							<select class="form-control" required formControlName="color">
-								<option value=""></option>
+							<select class="form-control" required formControlName="color" required>
 								<option value="red">Red</option>
 								<option value="green">Green</option>
 								<option value="blue">Blue</option>
@@ -41,7 +40,7 @@
 						</div>
 						<div class="form-group">
 							<label>Select Manufacturing</label>
-							<select  class="form-control" required [(ngModel)]="mValue" formControlName="m_id" required>
+							<select  class="form-control" formControlName="m_id" required>
 								<option *ngFor="let manufact of manufactures;" [value]="manufact.m_id">{{manufact.m_name}}</option>
 							</select>
 							<div class="alert-danger" *ngIf="!modelForm.controls['m_id'].valid && (modelForm.controls['m_id'].touched)">

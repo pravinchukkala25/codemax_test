@@ -64,6 +64,7 @@ $manufacturer = new Manufacturer;
 
 //$veiwData = $man->view();
 $method = explode('/', $_SERVER['REQUEST_URI']);
+
 switch($method[3]) {
 	case 'view':
 	$manufacturer->view();

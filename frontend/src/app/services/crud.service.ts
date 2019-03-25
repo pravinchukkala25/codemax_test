@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CrudService {
 	//base url
-	public url = 'http://localhost/codemax_test/';
+	public url = 'https://pcodextest.000webhostapp.com/backend/';
 
 	constructor(private http: HttpClient) { }
 
